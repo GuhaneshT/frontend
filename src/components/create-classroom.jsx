@@ -83,9 +83,10 @@ export default function TeacherDashboard() {
   };
 
   const createMeeting = async () => {
-    navigate(`http://127.0.0.1:8000/create_meeting?token=${token}`);
+    navigate(`/create_meeting?token=${token}`);
   };
 
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

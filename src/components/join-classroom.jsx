@@ -147,7 +147,7 @@ const JoinClassroom = () => {
 
   const viewGrade = (submissionId) => {
     if (token) {
-      navigate(`http://127.0.0.1:8000/grade_view/${submissionId}?token=${token}`);
+      navigate(`/grade_view/${submissionId}?token=${token}`);
     }
   };
   const handleEnrolledCourses = async () => {
