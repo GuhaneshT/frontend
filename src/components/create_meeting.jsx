@@ -95,7 +95,7 @@ export default function GoogleCalendarAuth() {
   };
 
   const handleAttendance = async () => {
-    navigate(`/attendance/${courseId}/${token}`);
+    navigate(`http://127.0.0.1:8000/attendance/${courseId}/${token}`);
   }
 
   return (

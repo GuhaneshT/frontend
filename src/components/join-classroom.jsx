@@ -77,7 +77,7 @@ const JoinClassroom = () => {
         setLoading(true);
         try {
           const response = await axios.get(
-            "/my_submissions",
+            "http://127.0.0.1:8000/my_submissions",
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -109,7 +109,7 @@ const JoinClassroom = () => {
 
     try {
       const response = await axios.post(
-        `/join_classroom`,
+        `http://127.0.0.1:8000/join_classroom`,
         { class_id: classId },
         {
           headers: {
@@ -122,7 +122,7 @@ const JoinClassroom = () => {
       setMessage(response.data.message || "Successfully joined the course!");
       setShowMessage(true);
       setClassroomId("");
-      navigate(`/chatroom/${classId}?token=${token}`);
+      navigate(`http://127.0.0.1:8000/chatroom/${classId}?token=${token}`);
     } catch (error) {
       console.error(error);
       setMessage(error.response?.data?.message || "Failed to join classroom. Check the course ID.");
@@ -147,12 +147,12 @@ const JoinClassroom = () => {
 
   const viewGrade = (submissionId) => {
     if (token) {
-      navigate(`/grade_view/${submissionId}?token=${token}`);
+      navigate(`http://127.0.0.1:8000/grade_view/${submissionId}?token=${token}`);
     }
   };
   const handleEnrolledCourses = async () => {
     try{
-    const response = await axios.get(`/courses_in_student`,{
+    const response = await axios.get(`http://127.0.0.1:8000/courses_in_student`,{
       headers: {
         Authorization: `Bearer ${token}`,
       },
