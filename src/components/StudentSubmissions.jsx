@@ -21,6 +21,7 @@ import { Assignment, Grade, History } from '@mui/icons-material';
 
 const StudentSubmissions = () => {
   const [submissions, setSubmissions] = useState([]);
+  const baseurl = "https://backend-production-518e.up.railway.app" || "http:127.0.0.1:8000"
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -33,7 +34,7 @@ const StudentSubmissions = () => {
     const fetchSubmissions = async () => {
       try {
         const response = await axios.get(
-          'http://127.0.0.1:8000/my_submissions',
+          `${baseurl}/my_submissions`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setSubmissions(response.data);

@@ -24,6 +24,7 @@ import {
 
 const Notifications = () => {
   const location = useLocation();
+  const baseurl = "https://backend-production-518e.up.railway.app" || "http:127.0.0.1:8000"
   const navigate = useNavigate(); // Initialize useNavigate
   const params = new URLSearchParams(location.search);
   const token = params.get("token");
@@ -37,7 +38,7 @@ const Notifications = () => {
   const fetchNotifications = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/notification`, {
+      const response = await axios.get(`${baseurl}/notification`, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -67,7 +68,11 @@ const Notifications = () => {
 
   useEffect(() => {
     fetchNotifications();
-    const ws = new WebSocket(`ws://localhost:8000/ws/notifications?token=${token}`);
+    const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+    const backendHost = `${protocol}//backend-production-518e.up.railway.app` || "127.0.0.1:8080";
+    
+    const ws = new WebSocket(`${backendHost}/ws/notifications?token=${token}`);
+  
     ws.onopen = () => {
       console.log("WebSocket connection established.");
     };
@@ -98,7 +103,7 @@ const Notifications = () => {
   const markAllAsRead = async () => {
     try {
       await axios.put(
-        `http://127.0.0.1:8000/notificatio/read`,
+        `${baseurl}/notificatio/read`,
         {},
         {
           headers: {

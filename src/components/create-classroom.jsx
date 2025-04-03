@@ -46,7 +46,8 @@ export default function TeacherDashboard() {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const token = params.get("token");
-
+ 
+ const baseurl = "https://backend-production-518e.up.railway.app" || "http:127.0.0.1:8000"
   const [classroomName, setClassroomName] = useState("");
   const [classroomForStudents, setClassroomForStudents] = useState("");
   const [message, setMessage] = useState("");
@@ -74,7 +75,7 @@ export default function TeacherDashboard() {
 
   const seeAssignments = async () => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/assignments/${course_id}`);
+      const response = await axios.get(`${baseurl}/assignments/${course_id}`);
       setAssignments(response.data);
     } catch (error) {
       console.error(error);
@@ -91,7 +92,7 @@ export default function TeacherDashboard() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/create_assignments",
+        `${baseurl}/create_assignments`,
         {
           title,
           description,
@@ -118,7 +119,7 @@ export default function TeacherDashboard() {
       console.log("Course ID:", course_id);  // Should print actual values
 console.log("Assignment ID:", assignmentid);
 
-      const response = await axios.get(`http://127.0.0.1:8000/notify_all/${course_id}/${assignmentid}`, {
+      const response = await axios.get(`${baseurl}/notify_all/${course_id}/${assignmentid}`, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -137,7 +138,7 @@ console.log("Assignment ID:", assignmentid);
         return;
       }
       const response = await axios.get(
-        `http://127.0.0.1:8000/students_in_courses/${classroomForStudents}`
+        `${baseurl}/students_in_courses/${classroomForStudents}`
       );
       if (response.data.students) {
         setStudents(response.data.students);
@@ -157,7 +158,7 @@ console.log("Assignment ID:", assignmentid);
     }
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/create_classroom",
+        `${baseurl}/create_classroom`,
         { name: classroomName },
         {
           headers: {

@@ -39,13 +39,14 @@ const SubmissionsTable = () => {
   const queryParams = new URLSearchParams(location.search);
   const token = queryParams.get("token");
   const { assignmentId } = useParams();
+  const baseurl = "https://backend-production-518e.up.railway.app" || "http:127.0.0.1:8000"
 
   useEffect(() => {
     const fetchSubmissions = async () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `http://127.0.0.1:8000/submissions/${assignmentId}`,
+          `${baseurl}/submissions/${assignmentId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -73,7 +74,7 @@ const SubmissionsTable = () => {
         setLoading(true);
         try {
           const response = await axios.get(
-            `http://127.0.0.1:8000/submissions/${assignmentId}`,
+            `${baseurl}/submissions/${assignmentId}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,

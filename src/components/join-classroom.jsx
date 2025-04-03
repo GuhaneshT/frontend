@@ -39,6 +39,8 @@ import {
 const JoinClassroom = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const baseurl = "https://backend-production-518e.up.railway.app" || "http:127.0.0.1:8000"
+
   const params = new URLSearchParams(location.search);
   const token = params.get("token") || localStorage.getItem("token");
   const [classroomId, setClassroomId] = useState("");
@@ -77,7 +79,7 @@ const JoinClassroom = () => {
         setLoading(true);
         try {
           const response = await axios.get(
-            "http://127.0.0.1:8000/my_submissions",
+            `${baseurl}/my_submissions`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -109,7 +111,7 @@ const JoinClassroom = () => {
 
     try {
       const response = await axios.post(
-        `http://127.0.0.1:8000/join_classroom`,
+        `${baseurl}/join_classroom`,
         { class_id: classId },
         {
           headers: {
@@ -152,7 +154,7 @@ const JoinClassroom = () => {
   };
   const handleEnrolledCourses = async () => {
     try{
-    const response = await axios.get(`http://127.0.0.1:8000/courses_in_student`,{
+    const response = await axios.get(`${baseurl}/courses_in_student`,{
       headers: {
         Authorization: `Bearer ${token}`,
       },

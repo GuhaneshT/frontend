@@ -16,6 +16,7 @@ import { School, ArrowBack, Folder } from "@mui/icons-material";
 
 const StudentGrade = () => {
   const { submissionId } = useParams();
+  const baseurl = "https://backend-production-518e.up.railway.app" || "http:127.0.0.1:8000"
   const [grade, setGrade] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showContent, setShowContent] = useState(false);
@@ -29,7 +30,7 @@ const StudentGrade = () => {
     const fetchGrade = async () => {
       try {
         const response = await axios.get(
-          `http://127.0.0.1:8000/my_mark/${submissionId}`,
+          `${baseurl}/my_mark/${submissionId}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setGrade(response.data);

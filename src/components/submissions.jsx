@@ -39,6 +39,7 @@ const AssignmentSubmission = () => {
   const [showSuccess, setShowSuccess] = useState(false);
   const [message, setMessage] = useState("");
   const [showForm, setShowForm] = useState(false);
+  const baseurl = "https://backend-production-518e.up.railway.app" || "http:127.0.0.1:8000"
 
   useState(() => {
     setTimeout(() => setShowForm(true), 500);
@@ -59,7 +60,7 @@ const AssignmentSubmission = () => {
 
     try {
       const response = await axios.post(
-        `http://127.0.0.1:8000/submit`,
+        `${baseurl}/submit`,
         formData,
         {
           headers: {

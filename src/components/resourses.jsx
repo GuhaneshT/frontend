@@ -42,6 +42,7 @@ export default function ResourceSharing() {
   const [showForm, setShowForm] = useState(false);
   const params = new URLSearchParams(window.location.search);
   const token = params.get("token")
+  const baseurl = "https://backend-production-518e.up.railway.app" || "http:127.0.0.1:8000"
   
   useEffect(() => {
     // Stagger animations for a more elegant entrance
@@ -50,7 +51,7 @@ export default function ResourceSharing() {
   const handleLike = async (res_id) => {
     try {
       const response = await axios.post(
-        `http://127.0.0.1:8000/like/${res_id}`,
+        `${baseurl}/like/${res_id}`,
         {}, // Empty body
         {
           headers: {
@@ -70,7 +71,7 @@ export default function ResourceSharing() {
       setLoading(true);
       const tagsArray = searchTags.split(",").map(tag => tag.trim());
   
-      const response = await axios.get("http://127.0.0.1:8000/search", {
+      const response = await axios.get(`${baseurl}/search`, {
         params: { tags: tagsArray },
         paramsSerializer: (params) => {
           return new URLSearchParams(params).toString();
@@ -108,7 +109,7 @@ export default function ResourceSharing() {
   
       console.log("Sending description:", description); // Debugging
   
-      const response = await axios.post("http://127.0.0.1:8000/upload", formData, {
+      const response = await axios.post(`${baseurl}/upload`, formData, {
         headers: { "Content-Type": "multipart/form-data", 
           "Authorization": `Bearer ${token}`
         },

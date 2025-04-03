@@ -32,6 +32,7 @@ const Login = () => {
   const [error, setError] = useState("");
   const [showError, setShowError] = useState(false);
   const navigate = useNavigate();
+  const baseurl = "https://backend-production-518e.up.railway.app"
 
   // Animation states
   const [showForm, setShowForm] = useState(false);
@@ -50,7 +51,7 @@ const Login = () => {
     
     setLoading(true);
     try {
-      const response = await axios.post("http://127.0.0.1:8000/login", { username, password });
+      const response = await axios.post(`${baseurl}/login`, { username, password });
       localStorage.setItem("token", response.data.token);
       const tokenPayload = JSON.parse(atob(response.data.token.split(".")[1]));
       const role = tokenPayload.role;

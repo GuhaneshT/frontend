@@ -38,7 +38,7 @@ const TeacherGrade = () => {
   const [successMessage, setSuccessMessage] = useState({});
   const navigate = useNavigate();
   const token = new URLSearchParams(window.location.search).get('token');
-
+const baseurl = "https://backend-production-518e.up.railway.app" || "http:127.0.0.1:8000"
   useEffect(() => {
     // Stagger animations for a more elegant entrance
     setTimeout(() => setShowContent(true), 500);
@@ -47,7 +47,7 @@ const TeacherGrade = () => {
       try {
         // Changed endpoint to match the one in main.py
         const response = await axios.get(
-          `http://127.0.0.1:8000/assignment_marks/${assignmentId}`,
+          `${baseurl}/assignment_marks/${assignmentId}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setSubmissions(response.data);
@@ -87,7 +87,8 @@ const TeacherGrade = () => {
       formData.append('mark', grades[submissionId]);
       
       await axios.post(
-        'http://127.0.0.1:8000/grade_submission',
+        `${baseurl}/grade_submission`,
+
         formData,
         { 
           headers: { 

@@ -35,14 +35,15 @@ export default function GoogleCalendarAuth() {
   const token = params.get("token");
 
   const startAuth = () => {
+    const baseurl = "https://backend-production-518e.up.railway.app"
     setLoading(true);
-    window.location.href = "http://127.0.0.1:8000/auth";
+    window.location.href = `${baseurl}/auth`;
   };
 
   const createEvent = async () => {
     try {
       setLoading(true);
-      const response = await fetch("http://127.0.0.1:8000/create-event");
+      const response = await fetch(`${baseurl}/create-event`);
       const data = await response.json();
 
       if (data.meet_link) {
@@ -74,7 +75,7 @@ export default function GoogleCalendarAuth() {
     try {
       setLoading(true);
       const response = await axios.get(
-        `http://127.0.0.1:8000/notify_all_meet/${courseId}?meet_link=${encodeURIComponent(meetingLink)}`,
+        `${baseurl}/notify_all_meet/${courseId}?meet_link=${encodeURIComponent(meetingLink)}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
