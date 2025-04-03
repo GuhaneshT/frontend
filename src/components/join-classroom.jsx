@@ -122,7 +122,7 @@ const JoinClassroom = () => {
       setMessage(response.data.message || "Successfully joined the course!");
       setShowMessage(true);
       setClassroomId("");
-      navigate(`http://127.0.0.1:8000/chatroom/${classId}?token=${token}`);
+      navigate(`/chatroom/${classId}?token=${token}`);
     } catch (error) {
       console.error(error);
       setMessage(error.response?.data?.message || "Failed to join classroom. Check the course ID.");
