@@ -51,7 +51,7 @@ const Login = () => {
     
     setLoading(true);
     try {
-      const response = await axios.post(`${baseurl}/login`, { username, password });
+      const response = await axios.post(`${baseurl}/login`, { username, password },{ withCredentials: true });
       localStorage.setItem("token", response.data.token);
       const tokenPayload = JSON.parse(atob(response.data.token.split(".")[1]));
       const role = tokenPayload.role;
