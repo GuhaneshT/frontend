@@ -47,7 +47,7 @@ export default function TeacherDashboard() {
   const params = new URLSearchParams(location.search);
   const token = params.get("token");
  
- const baseurl = "https://backend-production-518e.up.railway.app" || "http:127.0.0.1:8000"
+ const baseurl = "http://127.0.0.1:8000" || "https://backend-production-518e.up.railway.app" 
   const [classroomName, setClassroomName] = useState("");
   const [classroomForStudents, setClassroomForStudents] = useState("");
   const [message, setMessage] = useState("");
@@ -78,6 +78,8 @@ export default function TeacherDashboard() {
       const response = await axios.get(`${baseurl}/assignments/${course_id}`);
       setAssignments(response.data);
     } catch (error) {
+
+
       console.error(error);
       setMessage("Error fetching assignments.");
     }

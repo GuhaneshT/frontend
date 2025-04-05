@@ -454,7 +454,7 @@ import {
 } from "@mui/icons-material";
 
 const Chatroom = () => {
-  const baseurl = "https://backend-production-518e.up.railway.app"
+  const baseurl = "http://127.0.0.1:8000" || "https://backend-production-518e.up.railway.app"
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -472,12 +472,12 @@ const Chatroom = () => {
     // Stagger animations for a more elegant entrance
     setTimeout(() => setShowContent(true), 500);
     const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-    const backendUrl = import.meta.env.VITE_WS_URL || 
+    const backendUrl = "http://127.0.0.1:8000"||import.meta.env.VITE_WS_URL || 
                       `${protocol}//backend-production-518e.up.railway.app/ws/${id}`;
   
-    const newSocket = new WebSocket(`${backendUrl}?token=${token}`);
+    //const newSocket = new WebSocket(`${backendUrl}?token=${token}`);
     
-    //const newSocket = new WebSocket(`ws://127.0.0.1:8000/ws/${id}?token=${token}`);
+    const newSocket = new WebSocket(`ws://127.0.0.1:8000/ws/${id}?token=${token}`);
     setSocket(newSocket);
     
     newSocket.onopen = function () {

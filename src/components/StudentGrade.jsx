@@ -16,7 +16,7 @@ import { School, ArrowBack, Folder } from "@mui/icons-material";
 
 const StudentGrade = () => {
   const { submissionId } = useParams();
-  const baseurl = "https://backend-production-518e.up.railway.app" || "http:127.0.0.1:8000"
+  const baseurl = "http://127.0.0.1:8000"||"https://backend-production-518e.up.railway.app" || "http:127.0.0.1:8000"
   const [grade, setGrade] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showContent, setShowContent] = useState(false);

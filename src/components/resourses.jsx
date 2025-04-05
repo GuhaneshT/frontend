@@ -42,7 +42,7 @@ export default function ResourceSharing() {
   const [showForm, setShowForm] = useState(false);
   const params = new URLSearchParams(window.location.search);
   const token = params.get("token")
-  const baseurl = "https://backend-production-518e.up.railway.app" || "http:127.0.0.1:8000"
+  const baseurl =   "http://127.0.0.1:8000"||"https://backend-production-518e.up.railway.app"
   
   useEffect(() => {
     // Stagger animations for a more elegant entrance
