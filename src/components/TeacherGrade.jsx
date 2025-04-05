@@ -38,7 +38,7 @@ const TeacherGrade = () => {
   const [successMessage, setSuccessMessage] = useState({});
   const navigate = useNavigate();
   const token = new URLSearchParams(window.location.search).get('token');
-const baseurl = "http://127.0.0.1:8000"||"https://backend-production-518e.up.railway.app" || "http:127.0.0.1:8000"
+const baseurl = "http://192.168.1.100:8000"||"https://backend-production-518e.up.railway.app" || "http:127.0.0.1:8000"
   useEffect(() => {
     // Stagger animations for a more elegant entrance
     setTimeout(() => setShowContent(true), 500);

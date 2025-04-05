@@ -39,7 +39,7 @@ const SubmissionsTable = () => {
   const queryParams = new URLSearchParams(location.search);
   const token = queryParams.get("token");
   const { assignmentId } = useParams();
-  const baseurl =   "http://127.0.0.1:8000"||"https://backend-production-518e.up.railway.app" || "http:127.0.0.1:8000"
+  const baseurl =   "http://192.168.1.100:8000"||"https://backend-production-518e.up.railway.app" || "http:127.0.0.1:8000"
 
   useEffect(() => {
     const fetchSubmissions = async () => {

@@ -47,7 +47,7 @@ export default function TeacherDashboard() {
   const params = new URLSearchParams(location.search);
   const token = params.get("token");
  
- const baseurl = "http://127.0.0.1:8000" || "https://backend-production-518e.up.railway.app" 
+ const baseurl = "http://192.168.1.100:8000" || "https://backend-production-518e.up.railway.app" 
   const [classroomName, setClassroomName] = useState("");
   const [classroomForStudents, setClassroomForStudents] = useState("");
   const [message, setMessage] = useState("");

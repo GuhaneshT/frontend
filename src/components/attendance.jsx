@@ -598,7 +598,7 @@ import {
 } from "@mui/icons-material";
 
 const Attendance = () => {
-  const baseurl = "http://127.0.0.1:8000" || "https://backend-production-518e.up.railway.app"
+  const baseurl = "http://192.168.1.100:8000" || "https://backend-production-518e.up.railway.app"
   const { courseId, token } = useParams(); // ✅ Extract values from the URL path
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(false);

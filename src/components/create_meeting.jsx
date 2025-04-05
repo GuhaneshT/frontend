@@ -35,7 +35,7 @@ export default function GoogleCalendarAuth() {
   const token = params.get("token");
 
   const startAuth = () => {
-    const baseurl = "http://127.0.0.1:8000" || "https://backend-production-518e.up.railway.app"
+    const baseurl = "http://192.168.1.100:8000" || "https://backend-production-518e.up.railway.app"
     setLoading(true);
     window.location.href = `${baseurl}/auth`;
   };
